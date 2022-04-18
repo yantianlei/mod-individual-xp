@@ -67,7 +67,7 @@ public:
 
     void OnLogin(Player* p) override
     {
-        QueryResult result = CharacterDatabase.Query("SELECT `XPRate` FROM `individualxp` WHERE `CharacterGUID` = %u", p->GetGUID().GetCounter());
+        QueryResult result = CharacterDatabase.Query("SELECT `XPRate` FROM `individualxp` WHERE `CharacterGUID` = '{}'", p->GetGUID().GetCounter());
         if (!result)
         {
             p->CustomData.GetDefault<PlayerXpRate>("Individual_XP")->XPRate = DefaultRate;
@@ -84,7 +84,7 @@ public:
         if (PlayerXpRate* data = p->CustomData.Get<PlayerXpRate>("Individual_XP"))
         {
             uint32 rate = data->XPRate;
-            CharacterDatabase.DirectExecute("REPLACE INTO `individualxp` (`CharacterGUID`, `XPRate`) VALUES (%u, %u);", p->GetGUID().GetCounter(), rate);
+            CharacterDatabase.DirectExecute("REPLACE INTO `individualxp` (`CharacterGUID`, `XPRate`) VALUES ('{}', '{}');", p->GetGUID().GetCounter(), rate);
         }
     }
 
