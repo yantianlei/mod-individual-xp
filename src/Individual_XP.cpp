@@ -47,7 +47,7 @@ public:
         // Announce Module
         if (IndividualXpEnabled & IndividualXpAnnounceModule)
         {
-            ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00IndividualXpRate |rmodule");
+            ChatHandler(player->GetSession()).SendSysMessage("这个服务器默认7倍经验,支持 |cff4CFF001-7倍经验 |r调整 输入 .xp set 1 或者 .xp set 7");
         }
     }
 };
